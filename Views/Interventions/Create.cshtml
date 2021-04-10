@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Rocket_Elevators_Customer_Portal.Models.Customers>
+
+
+@{ ViewBag.Title = "customers";}
+
+
+<h1>Intervention Form</h1>
+
+<form asp-action="Create"id="intervention" method="post" enctype="multipart/form-data">
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="form-group form-row">
+        <div class="col-12 col-md" id="customer-group">
+            <label for="customer" class="form-label">Customer</label>
+            @foreach (var r in Model)
+            {
+                <input type="text" id="customer" value=" @r.Id" name="customer" readonly class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark" />}
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-12 col-md" id="building-group">
+            <label for="building" class="form-label">Building</label>
+            <select id="building" name="building" required class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark"></select>
+        </div>
+        <div class="col-12 col-md" id="battery-group">
+            <label for="battery" class="form-label">Battery</label>
+            <select id="battery" name="battery" required class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark"></select>
+        </div>
+        <div class="col-12 col-md" id="column-group">
+            <label for="column" class="form-label">Column</label>
+            <select id="column" name="column" class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark"></select>
+        </div>
+        <div class="col-12 col-md" id="elevator-group">
+            <label for="elevator" class="form-label">Elevator</label>
+            <select id="elevator" name="elevator" class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" required class="form-control border border-secondary" style="height: 150px;"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-danger btn-block" />
+    </div>
+
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/Scripts/Interventions.js"></script>
+}
