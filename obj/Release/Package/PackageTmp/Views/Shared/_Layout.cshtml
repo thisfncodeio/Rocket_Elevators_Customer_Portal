@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Rocket Elevators Customer Portal</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/styles.css" />
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo.png" alt="logo" class="logo" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link text-dark" })
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>*@
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("My Products", "Index", "ProductManagement", null, new { @class = "nav-link text-dark" })
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Products">My Products</a>*@
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Create Interventions", "Create", "Interventions", null, new { @class = "nav-link text-dark" })
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Interventions" asp-action="Create">Create Intervention</a>*@
+                        </li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </nav>
+    </header>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        @*<hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <!-- col #1 -->
+                <div class="col-md-8">
+
+                    <div class="footer-logo">
+                        <img src="~/Content/img/logo.png" alt="logo" class="logo" />
+                    </div>
+                    <h3 class="letter-spacing-1">WHY US?</h3>
+
+                    <!-- Small Description -->
+                    <p>
+                        We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have
+                    </p>
+                    <h2>(418) 555-1234</h2>
+                </div>
+                <!-- /col #1 -->
+
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+
+                &copy; All Rights Reserved, Rocket Elevators LTD
+            </div>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
