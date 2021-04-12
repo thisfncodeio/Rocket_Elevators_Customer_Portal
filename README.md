@@ -17,3 +17,7 @@ Passwords must:
  - Contain at least 1 uppercase letter
  - Contain at least 1 number
  - Contain at least 1 special character
+
+## Custom Domain
+
+Unfortunately with the free tier of Azure, it is not possible to create custom domains. I tried purchasing a domain name from Namecheap and re-routing the name to Azure while masking the address bar URL but for some reason this does not work. There is still re-routing but the the Azure URL shows up in the address bar when you finally land on the page.
