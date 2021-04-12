@@ -5,10 +5,10 @@
     $("#column-group").hide();
     $("#elevator-group").hide();
 
-    console.log("i am working")
+    //console.log("i am working")
     
 
-    console.log("customer is changing")
+    //console.log("customer is changing")
     var id_value_string = $("#customer").val();
     if (id_value_string == "") {
         $("select#building option").remove();
@@ -16,13 +16,13 @@
         $(row).appendTo("select#building");
     } else {
         // Send the request and update course dropdown
-        console.log("before ajax " + id_value_string)
+        //console.log("before ajax " + id_value_string)
 
         $.ajax({
             dataType: "json",
             method: 'GET',
             cache: false,
-            url: 'https://rocket-elevator-rest-api1.herokuapp.com/Building/CustomerId/' + id_value_string,
+            url: 'https://rocket-elevators-rest-apii.herokuapp.com/buildings/from-customer/' + id_value_string,
             timeout: 5000,
             error: function (XMLHttpRequest, errorTextStatus, error) {
                 alert("Failed to submit : " + errorTextStatus + " ;" + error);
@@ -36,7 +36,7 @@
                 // Fill course select
                 $.each(data, function (i, j) {
                     row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
-                    console.log(row)
+                    //console.log(row)
                     $(row).appendTo("select#building");
                     
                 });
@@ -48,7 +48,7 @@
     $("select#building").change(function () {
         $("#column-group").hide();
         $("#elevator-group").hide();
-        console.log("building is changing")
+        //console.log("building is changing")
         var id_value_string = $(this).val();
         if (id_value_string == "") {
             $("select#battery option").remove();
@@ -56,13 +56,13 @@
             $(row).appendTo("select#battery");
         } else {
             // Send the request and update course dropdown
-            console.log("before ajax " + id_value_string)
+            //console.log("before ajax " + id_value_string)
 
             $.ajax({
                 dataType: "json",
                 method: 'GET',
                 cache: false,
-                url: 'https://rocket-elevator-rest-api1.herokuapp.com/Batteries/buildingId/' + id_value_string,
+                url: 'https://rocket-elevators-rest-apii.herokuapp.com/batteries/from-building/' + id_value_string,
                 timeout: 5000,
                 error: function (XMLHttpRequest, errorTextStatus, error) {
                     alert("Failed to submit : " + errorTextStatus + " ;" + error);
@@ -76,7 +76,7 @@
                     // Fill course select
                     $.each(data, function (i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
-                        console.log(row)
+                        //console.log(row)
                         $(row).appendTo("select#battery");
                         $("#battery-group").show();
                     });
@@ -87,7 +87,7 @@
 
     $("select#battery").change(function () {
         $("#elevator-group").hide();
-        console.log("battery is changing")
+        //console.log("battery is changing")
         var id_value_string = $(this).val();
         if (id_value_string == "") {
             $("select#column option").remove();
@@ -95,13 +95,13 @@
             $(row).appendTo("select#column");
         } else {
             // Send the request and update course dropdown
-            console.log("before ajax " + id_value_string)
+            //console.log("before ajax " + id_value_string)
 
             $.ajax({
                 dataType: "json",
                 method: 'GET',
                 cache: false,
-                url: 'https://rocket-elevator-rest-api1.herokuapp.com/Columns/batteriesId/' + id_value_string,
+                url: 'https://rocket-elevators-rest-apii.herokuapp.com/columns/from-battery/' + id_value_string,
                 timeout: 5000,
                 error: function (XMLHttpRequest, errorTextStatus, error) {
                     alert("Failed to submit : " + errorTextStatus + " ;" + error);
@@ -115,7 +115,7 @@
                     // Fill course select
                     $.each(data, function (i, j) {
                         row = "<option value=\"" + j.id + "\">" + j.id + "</option>";
-                        console.log(row)
+                        //console.log(row)
                         $(row).appendTo("select#column");
                         $("#column-group").show();
                     });
@@ -141,7 +141,7 @@
             $.ajax({
                 dataType: "json",
                 cache: false,
-                url: 'https://rocket-elevator-rest-api1.herokuapp.com/Elevators/columnId/' + id_value_string,
+                url: 'https://rocket-elevators-rest-apii.herokuapp.com/elevators/from-column/' + id_value_string,
                 timeout: 5000,
                 error: function (XMLHttpRequest, errorTextStatus, error) {
                     alert("Failed to submit : " + errorTextStatus + " ;" + error);
@@ -189,16 +189,16 @@
             "elevators_id": elevatorId,
             "Report": report
         };
-        console.log(interventionData);
-        console.log("+++++++++");
-        console.log(JSON.stringify(interventionData));
-        console.log("+++++++++");
-        console.log("befor ajax");
+        //console.log(interventionData);
+        //console.log("+++++++++");
+        //console.log(JSON.stringify(interventionData));
+        //console.log("+++++++++");
+        //console.log("befor ajax");
         $.ajax({
             type: 'POST',
             data: JSON.stringify(interventionData), 
             contentType: "application/json",
-            url: 'https://rocket-elevator-rest-api1.herokuapp.com/Interventions',
+            url: 'https://rocket-elevators-rest-apii.herokuapp.com/interventions',
             success: function (data) {
                 alert("Your Interventions Has Been Saved");
             }

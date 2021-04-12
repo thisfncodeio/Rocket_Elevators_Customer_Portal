@@ -153,7 +153,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
         {
 
             var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync($"https://rocket-elevator-rest-api1.herokuapp.com/customer/{model.Email}");
+            var response = await httpClient.GetAsync($"https://rocket-elevators-rest-apii.herokuapp.com/customers/{model.Email}");
               
             
             if (ModelState.IsValid && response.StatusCode == HttpStatusCode.OK)

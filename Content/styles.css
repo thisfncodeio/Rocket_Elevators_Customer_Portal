@@ -518,4 +518,13 @@ footer.sticky {
 #access li {
     display: inline-block !important;
     padding: 10px !important;
+    font-weight: bold;
+}
+
+#access a:link,
+#access a:visited,
+#access a:focus,
+#access a:hover,
+#access a:active {
+    color: #343A40;
 }

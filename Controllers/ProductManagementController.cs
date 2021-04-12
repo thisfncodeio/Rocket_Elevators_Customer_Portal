@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Rocket_Elevators_Customer_Portal.Controllers
 {
+    [Authorize]
     public class ProductManagementController : Controller
     {
         // GET: ProductManagement
@@ -22,7 +23,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             List<Customers> customers = new List<Customers>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/customer/" + userName))
+                using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/customers/" + userName))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     customers = JsonConvert.DeserializeObject<List<Customers>>(apiResponse);
@@ -33,7 +34,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             List<Buildings> allBuildings = new List<Buildings>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/building/CustomerId/" + customers[0].Id))
+                using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/buildings/from-customer/" + customers[0].Id))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     allBuildings = JsonConvert.DeserializeObject<List<Buildings>>(apiResponse);
@@ -48,7 +49,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/batteries/buildingId/" + building.Id))
+                    using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/batteries/from-building/" + building.Id))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         batteries = JsonConvert.DeserializeObject<List<Batteries>>(apiResponse);
@@ -68,7 +69,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/columns/batteriesId/" + battery.Id))
+                    using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/columns/from-battery/" + battery.Id))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         columns = JsonConvert.DeserializeObject<List<Columns>>(apiResponse);
@@ -88,7 +89,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             {
                 using (var httpClient = new HttpClient())
                 {
-                    using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/elevators/columnId/" + column.Id))
+                    using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/elevators/from-column/" + column.Id))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         elevators = JsonConvert.DeserializeObject<List<Elevators>>(apiResponse);

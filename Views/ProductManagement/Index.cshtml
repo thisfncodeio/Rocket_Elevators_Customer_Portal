@@ -8,7 +8,8 @@
 <h2>My Products</h2>
 
 <div class="row mt-5">
-    <div class="product-container col-12 col-md-2 text-center position-relative mb-3">
+    @*<div class="product-container col-12 col-md-2 text-center position-relative mb-3">*@
+    <div class="product-container col-3 col-md-2 text-center position-relative mb-3">
         <p>Batteries</p>
         <hr />
         <ul class="list-unstyled" id="battery-list">
@@ -21,7 +22,7 @@
         </ul>
     </div>
 
-    <div class="product-container col-12 col-md-2 text-center position-relative mb-3">
+    <div class="product-container col-3 col-md-2 text-center position-relative mb-3">
         <p>Columns</p>
         <hr />
         <ul class="list-unstyled" id="column-list">
@@ -34,7 +35,7 @@
         </ul>
     </div>
 
-    <div class="product-container col-12 col-md-2 text-center position-relative mb-3">
+    <div class="product-container col-3 col-md-2 text-center position-relative mb-3">
         <p>Elevators</p>
         <hr />
         <ul class="list-unstyled" id="elevator-list">
@@ -52,27 +53,29 @@
 
             <div asp-validation-summary="ModelOnly"></div>
 
+            <p><b>Interventions Request Form</b></p>
+
             <div class="form-group form-row">
                 <div class="col-12 col-md" id="customer-group">
-                    <label class="form-label">Interventions Request</label>
+                    <label class="form-label">My Customer ID</label>
                     <input type="text" id="customer" value="@ViewBag.customerId" name="customer" readonly class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark" />
                 </div>
             </div>
             <div class="form-group form-row">
                 <div class="col-12 col-md" id="building-group">
-                    <label for="building" class="form-label">Building</label>
+                    <label for="building" class="form-label">Building ID</label>
                     <input type="text" id="building" name="building" required class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark" readonly>
                 </div>
                 <div class="col-12 col-md" id="battery-group">
-                    <label for="battery" class="form-label">Battery</label>
+                    <label for="battery" class="form-label">Battery ID</label>
                     <input type="text" id="battery" name="battery" required class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark" readonly>
                 </div>
                 <div class="col-12 col-md" id="column-group">
-                    <label for="column" class="form-label">Column</label>
+                    <label for="column" class="form-label">Column ID</label>
                     <input type="text" id="column" name="column" class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark" readonly>
                 </div>
                 <div class="col-12 col-md" id="elevator-group">
-                    <label for="elevator" class="form-label">Elevator</label>
+                    <label for="elevator" class="form-label">Elevator ID</label>
                     <input type="text" id="elevator" name="elevator" class="form-control mb-0 mr-sm-0 mb-sm-0 border border-secondary text-dark" readonly>
                 </div>
             </div>
@@ -91,7 +94,7 @@
         <script>
             let formData = {};
 
-            console.log("Hello");
+            //console.log("Hello");
 
             const elevatorList = document.getElementById("elevator-list");
             const columnList = document.getElementById("column-list");
@@ -110,16 +113,16 @@
                     formData.elevator_id = elevator_id;
 
                     // Save the column id
-                    await $.get(`https://rocket-elevator-rest-api1.herokuapp.com/elevators/${elevator_id}`, (elevatorData) => { formData.column_id = elevatorData.columnId });
+                    await $.get(`https://rocket-elevators-rest-apii.herokuapp.com/elevators/${elevator_id}`, (elevatorData) => { formData.column_id = elevatorData.columnId });
 
                     // Save the battery id
-                    await $.get(`https://rocket-elevator-rest-api1.herokuapp.com/columns/${formData.column_id}`, (columnData) => { formData.battery_id = columnData.batteryId });
+                    await $.get(`https://rocket-elevators-rest-apii.herokuapp.com/columns/${formData.column_id}`, (columnData) => { formData.battery_id = columnData.batteryId });
 
                     // Save the building id
-                    await $.get(`https://rocket-elevator-rest-api1.herokuapp.com/batteries/${formData.battery_id}`, (batteryData) => { formData.building_id = batteryData.buildingId });
+                    await $.get(`https://rocket-elevators-rest-apii.herokuapp.com/batteries/${formData.battery_id}`, (batteryData) => { formData.building_id = batteryData.buildingId });
 
-                    console.log(formData);
-                    $("#interventionMini").show();
+                    //console.log(formData);
+                    //$("#interventionMini").show();
                     $("#column-group").show()
                     $("#column").val(formData.column_id);
                     $("#elevator-group").show()
@@ -143,13 +146,13 @@
                     formData.column_id = column_id;
 
                     // Save the battery id
-                    await $.get(`https://rocket-elevator-rest-api1.herokuapp.com/columns/${formData.column_id}`, (columnData) => { formData.battery_id = columnData.batteryId });
+                    await $.get(`https://rocket-elevators-rest-apii.herokuapp.com/columns/${formData.column_id}`, (columnData) => { formData.battery_id = columnData.batteryId });
 
                     // Save the building id
-                    await $.get(`https://rocket-elevator-rest-api1.herokuapp.com/batteries/${formData.battery_id}`, (batteryData) => { formData.building_id = batteryData.buildingId });
+                    await $.get(`https://rocket-elevators-rest-apii.herokuapp.com/batteries/${formData.battery_id}`, (batteryData) => { formData.building_id = batteryData.buildingId });
 
-                    console.log(formData);
-                    $("#interventionMini").show();
+                    //console.log(formData);
+                    //$("#interventionMini").show();
                     $("#column-group").show()
                     $("#column").val(formData.column_id);
                     $("#elevator-group").hide()
@@ -172,10 +175,10 @@
                     formData.battery_id = battery_id;
 
                     // Save the building id
-                    await $.get(`https://rocket-elevator-rest-api1.herokuapp.com/batteries/${formData.battery_id}`, (batteryData) => { formData.building_id = batteryData.buildingId });
+                    await $.get(`https://rocket-elevators-rest-apii.herokuapp.com/batteries/${formData.battery_id}`, (batteryData) => { formData.building_id = batteryData.buildingId });
 
-                    console.log(formData);
-                    $("#interventionMini").show();
+                    //console.log(formData);
+                    //$("#interventionMini").show();
                     $("#column-group").hide()
                     $("#column").val(null);
                     $("#elevator-group").hide()
@@ -185,9 +188,9 @@
                 });
             });
 
-            $(document).ready(function () {
-                $("#interventionMini").hide();
-            });
+            //$(document).ready(function () {
+            //    $("#interventionMini").hide();
+            //});
             $("#interventionMini").submit(function (e) {
                 e.preventDefault();
                 var customerId = $("#customer").val();
@@ -213,14 +216,21 @@
                     "elevators_id": elevatorId,
                     "Report": report
                 };
-                
+
                 $.ajax({
                     type: 'POST',
                     data: JSON.stringify(interventionData),
                     contentType: "application/json",
-                    url: 'https://rocket-elevator-rest-api1.herokuapp.com/Interventions',
+                    url: 'https://rocket-elevators-rest-apii.herokuapp.com/Interventions',
                     success: function (data) {
                         alert("Your Interventions Has Been Saved");
+
+                        // Clear all fields
+                        $("input#building").val("");
+                        $("input#battery").val("");
+                        $("input#column").val("")
+                        $("input#elevator").val("")
+                        $("#description").val("");
                     }
                 });
                 /*window.location.href = "/home";*/

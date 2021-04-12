@@ -20,7 +20,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             List<Customers> customers = new List<Customers>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/customer/" + userName))
+                using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/customers/" + userName))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     System.Diagnostics.Debug.WriteLine("--------------------------api Response---------------------");

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Rocket_Elevators_Customer_Portal.Controllers
 {
+    [Authorize]
     public class InterventionsController : Controller
     {
         // GET: Interventions
@@ -20,7 +21,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             List<Customers> customers = new List<Customers>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/customer/" + userName))
+                using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/customers/" + userName))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     System.Diagnostics.Debug.WriteLine("--------------------------api Response---------------------");
@@ -45,7 +46,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
         //{
         //    string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
         //    var httpClient = new HttpClient();
-        //    var response = await httpClient.GetAsync($"https://rocket-elevator-rest-api1.herokuapp.com/customer/{userName}");
+        //    var response = await httpClient.GetAsync($"https://rocket-elevators-rest-apii.herokuapp.com/customers/{userName}");
         //    var customer = new Customers();
 
         //    return View();
@@ -60,7 +61,7 @@ namespace Rocket_Elevators_Customer_Portal.Controllers
             List<Customers> customers = new List<Customers>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://rocket-elevator-rest-api1.herokuapp.com/customer/" + userName))
+                using (var response = await httpClient.GetAsync("https://rocket-elevators-rest-apii.herokuapp.com/customers/" + userName))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     System.Diagnostics.Debug.WriteLine("--------------------------api Response---------------------");
